@@ -4,8 +4,8 @@ import joblib
 # from sklearn.feature_extraction.text import TfidfVectorizer
 # from sklearn.preprocessing import StandardScaler
 import numpy as np
-# import base64
-# import os
+import base64
+import os
 import warnings
 warnings.filterwarnings("ignore", message="X does not have valid feature names")
 
@@ -16,29 +16,29 @@ except ImportError:
         pass 
 
 
-# # Fungsi untuk mengatur latar belakang
-# def set_background(image_path="bg1.jpg"):
-#     if os.path.exists(image_path):
-#         with open(image_path, "rb") as image_file:
-#             encoded_image = base64.b64encode(image_file.read()).decode()
-#         st.markdown(f"""
-#         <style>
-#         .stApp {{
-#             background-image: url('data:image/jpeg;base64,{encoded_image}');
-#             background-size: cover;
-#             background-position: center center;
-#             background-repeat: no-repeat;
-#         }}
-#         </style>
-#         """, unsafe_allow_html=True)
-#     else:
-#         st.warning("Background image not found. Default background will be used.")
+# Fungsi untuk mengatur latar belakang
+def set_background(image_path="bg1.jpg"):
+    if os.path.exists(image_path):
+        with open(image_path, "rb") as image_file:
+            encoded_image = base64.b64encode(image_file.read()).decode()
+        st.markdown(f"""
+        <style>
+        .stApp {{
+            background-image: url('data:image/jpeg;base64,{encoded_image}');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }}
+        </style>
+        """, unsafe_allow_html=True)
+    else:
+        st.warning("Background image not found. Default background will be used.")
 
 # Atur halaman
 st.set_page_config(page_title="Job Recommendation Dashboard", layout="wide")
 
-# # Set background
-# set_background("bg1.jpg")
+# Set background
+set_background("bg1.jpg")
 
 # Load Dataset and Model
 @st.cache_resource
